@@ -21,14 +21,31 @@ class School:
 
 
 class Primary(School):
-   def __init__(self, name, numberOfStudents, pickupPolicy,level="primary"):
+    def __init__(self, name, numberOfStudents, pickupPolicy,level='primary'):
        super().__init__(name, numberOfStudents,level)
        self.pickUpPolicy = pickupPolicy
+    
+    def get_pickupPolicy(self):
+       return self.pickUpPolicy
 
-nps = Primary('Narain Public School',2300,"Pick up before 2 pm")
-print(nps)
+    def __repr__(self):
+        schoolRepr = super().__repr__()
+        return schoolRepr + " The pickup Policy is {}".format(self.get_pickupPolicy())
+
+# nps = Primary('Narain Public School',2300,"Pick up before 2 pm")
+# print(nps)
 
 class High(School):
-    def __init__(self, name, numberOfStudents, level="primary"):
+    def __init__(self, name, numberOfStudents, sportsTeam,level="high"):
         super().__init__(name, numberOfStudents, level)
-        self.sportsTeams = ['basketball','tennis','swimming']
+        self.sportsTeams = sportsTeam
+
+    def get_sportTeams(self):
+        return list(self.sportsTeams)
+    
+    def __repr__(self):
+        schoolRepr = super().__repr__()
+        return schoolRepr + " the list of school's sports teams: {}".format(self.get_sportTeams())
+    
+bdps = High('BDPS',5000,['basketball','cricket','tennis'])
+print(bdps)
